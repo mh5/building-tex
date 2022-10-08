@@ -1,0 +1,54 @@
+@@ -81,18 +81,17 @@
+ \outer\def\N#1.#2.{\MN#1.\vfil\eject % beginning of starred section
+   \def\rhead{\uppercase{\ignorespaces#2}} % define running headline
+   \message{*\modno} % progress report
+   \edef\next{\write\cont{\Z{#2}{\modno}{\the\pageno}}}\next % to contents file
+   \ifon\startsection{\bf\ignorespaces#2.\quad}\ignorespaces}
+ \def\MN#1.{\par % common code for \M, \N
+   {\xdef\modstar{#1}\let\*=\empty\xdef\modno{#1}}% remove \* from section name
+   \ifx\modno\modstar \onmaybe \else\ontrue \fi
+-  \mark{{{\tensy x}\modno}{\rhead}}}
+-  % each \mark is {section reference or null}{group title}
++  \mark{{\tensy x}\modno}}
+ \def\O#1{\hbox{\rm\char'23\kern-.2em\it#1\/\kern.05em}} % octal constant
+ \def\P{\rightskip=0pt plus 100pt minus 10pt % go into Pascal mode
+   \sfcode`;=3000
+   \pretolerance 10000
+   \hyphenpenalty 10000 \exhyphenpenalty 10000
+   \global\ind=2 \1\ \unskip}
+ \def\Q{\rightskip=0pt % get out of Pascal mode
+   \sfcode`;=1500 \pretolerance 200 \hyphenpenalty 50 \exhyphenpenalty 50 }
+@@ -116,31 +115,29 @@
+ \let\*=*
+
+ \def\onmaybe{\let\ifon=\maybe} \let\maybe=\iftrue
+ \newif\ifon \newif\iftitle \newif\ifpagesaved
+ \def\lheader{\mainfont\the\pageno\eightrm\qquad\rhead
+   \hfill\title\qquad\mainfont\topsecno} % top line on left-hand pages
+ \def\rheader{\mainfont\topsecno\eightrm\qquad\title\hfill
+   \rhead\qquad\mainfont\the\pageno} % top line on right-hand pages
+-\def\topsecno{\expandafter\takeone\topmark}
+-\def\takeone#1#2{#1}
+-\def\taketwo#1#2{#2}
++\let\topsecno=\topmark
+ \def\nullsec{\eightrm\kern-2em} % the \kern-2em cancels \qquad in headers
+ \def\page{\box255 }
+ \def\normaloutput#1#2#3{\ifodd\pageno\hoffset=\pageshift\fi
+   \shipout\vbox{
+     \vbox to\fullpageheight{
+       \iftitle\global\titlefalse
+       \else\hbox to\pagewidth{\vbox to10pt{}\ifodd\pageno #3\else#2\fi}\fi
+       \vfill#1}} % parameter #1 is the page itself
+   \global\advance\pageno by1}
+
+ \def\rhead{\.{WEB} OUTPUT} % this running head is reset by starred sections
+-\mark{\noexpand\nullsec{\rhead}}
++\mark{\noexpand\nullsec}
+ \def\title{} % an optional title can be set by the user
+ \def\topofcontents{\centerline{\titlefont\title}
+   \vfill} % this material will start the table of contents page
+ \def\botofcontents{\vfill} % this material will end the table of contents page
+ \def\contentspagenumber{0} % default page number for table of contents
+ \newdimen\pagewidth \pagewidth=6.5in % the width of each page
+ \newdimen\pageheight \pageheight=8.7in % the height of each page
+ \newdimen\fullpageheight \fullpageheight=9in % page height including headlines
