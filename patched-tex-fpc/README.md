@@ -46,11 +46,11 @@ The image contains the binaries
 It also contains the plain format, the compiled fonts required for it, and a
 [patch](https://archive.ph/iubpK) for webmac.tex.
 
-### Can this project help me build tex-fpc without Docker?
+### Can this project help me build TeX-FPC without Docker?
 
 Yes, take a look at development.Dockerfile. Repeating the build is as simple as
 redoing the steps listed in this file. It is mainly about setting some
-environment variables and running a few scripts scripts.
+environment variables and running a few scripts.
 
 Understanding what the scripts do requires reading the README file of the
 [tex-fpc project](https://ctan.org/pkg/tex-fpc).
@@ -97,6 +97,10 @@ directories and then invokes `tex`.
 
 No, only DVI is supported in this project. I am considering trying my luck with
 a minimal build of `dvipdfmx` in the future.
+
+Also, the TeX-FPC project comes with a documentation for compiling `dvips`,
+which converts DVI files to PS files. I will give it a try in the future and
+include it in this image.
 
 ### Is there a way to run this on Windows?
 

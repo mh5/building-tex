@@ -19,7 +19,7 @@ mkdir -p TeXinputs TeXformats TeXfonts MFbases MFinputs bin
 cd "$TEX_HOME"
 cp -r dist/* tex-fpc
 
-# build tangle, which converts .web + .ch files into Perl files
+# build tangle, which converts .web + .ch files into Pascal files
 fpc ./tex-fpc/tangle.p
 mv tex-fpc/tangle distro/bin/
 
